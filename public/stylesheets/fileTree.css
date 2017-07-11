@@ -1,0 +1,77 @@
+#fileTree ul {
+  list-style: none outside none;
+  padding: 0;
+}
+#fileTree li {
+  text-indent: 20px;
+}
+#fileTree li a {
+  color: white;
+  text-decoration: none;
+  line-height: 25px;
+}
+#fileTree li a:hover {
+  text-decoration: none;
+}
+#fileTree > ul > li > a {
+  color: white;
+  display: block;
+  font-weight: normal;
+  position: relative;
+  text-decoration: none;
+}
+#fileTree li.Directory > a {
+  padding: 0 0 0 28px;
+}
+#fileTree li.Directory > a:before {
+  background-image: url("../images/arrow_icons.png");
+  background-position: 25px center;
+  content: "";
+  display: block;
+  height: 21px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  vertical-align: middle;
+  width: 23px;
+}
+#fileTree ul li.active > a:before {
+background-position: 0 center;
+}
+#fileTree ul li ul {
+  border-left: 1px solid #D9DADB;
+  display: none;
+  margin: 0 0 0 12px;
+  overflow: hidden;
+  padding: 0 0 0 25px;
+}
+#fileTree ul li ul li {
+  position: relative;
+}
+#fileTree ul li ul li:before {
+  border-bottom: 1px dashed #E2E2E3;
+  content: "";
+  left: -20px;
+  position: absolute;
+  top: 12px;
+  width: 15px;
+}
+
+#fileTree {
+  margin: 2px;
+  padding:5px;
+  height:72.5vh;
+  width: 100%;
+}
+
+.scroll-area{
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+@media(max-width:767px){
+  #fileTree {
+    height:100%;
+    position: relative;
+  }
+}

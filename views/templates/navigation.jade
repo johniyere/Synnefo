@@ -1,0 +1,27 @@
+//- Navigation bar made with bootstrap.
+//- Mixins in a different file.
+
++nav("Synnefo", "dropdown_menu")(image="/images/logosmallclear.png")
+  ul.nav.navbar-nav
+    if !user.isAuthenticated
+      +nav_item("/") Home
+    else
+      +nav_item("/projects") My Projects
+      +nav_item("/help") Help
+  ul.nav.navbar-nav.navbar-right
+    if !user.isAuthenticated
+      +nav_item("/signup", "RegisterPage")
+        span(class="glyphicon glyphicon-user")
+        span  Register
+      +nav_item("/login", "LoginPage" )
+        span(class="glyphicon glyphicon-log-in")
+        span  Login
+    else
+      +nav_item_dropdown("#")( label=user.details.firstName + " " + user.details.lastName + " ", image=user.details.getIconURL())
+        +nav_header Account settings
+        +nav_item( "/imgupload", "Profile Photo") Profile Photo
+        +nav_item( "/update_password" ) Change password
+        +nav_item( "/profile" ) My Profile
+        +nav_divider
+        +nav_item( "/signout" ) Logout 
+          i (#{user.details.username})

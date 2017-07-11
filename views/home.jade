@@ -1,0 +1,74 @@
+//- Uses the layout.
+extends layout
+
+block head
+	style.
+		body { background-color: #1D82DD; }
+		.home { text-align: center; color: white; }
+		.home .title { font-weight: bold;  margin-bottom: 20px; margin-top: 50px} 
+		.home-box .icon { margin-bottom: 10px; }
+		.home-box .text { line-height: 1.5em; }
+		.logo-div {margin: 140px 0;}
+
+mixin detailBlock(iconUrl)
+	.col-md-4.home-box
+		img(src=iconUrl width="70px" height="70px").icon
+		.text
+			block
+
+//- Uses the block part of the layout.
+block content
+
+	.home
+
+		div(class='logo-div')
+			img(src='/images/landinglogo.png' width="400px")
+
+		h1.title Code in the Cloud
+		.container-fluid
+			.row
+				+detailBlock("/images/mobile.png")
+					p.
+						Code and run Java and Python from anywhere, including on mobile thanks to Synnefo's responsive design.
+				+detailBlock("/images/users.png")
+					p.
+						Share authorship equally, offer read-only access, or give trusted users editing rights with fine-tuned privileges.
+				+detailBlock("/images/speech.png")
+					p.
+						Collaborate on projects, share ideas, and give feedback through Synnefo's Snippets annotation feature!
+
+		.title Snippets?
+		.container-fluid
+			.row
+				+detailBlock("/images/one.png")
+					img(src='/images/types.png' width="200px")
+					p.
+						To start using Snippets just invite users to your read or edit projects. 
+					p.
+						Optionally, you can mark out specific sections of documents.
+				+detailBlock("/images/two.png")
+					img(src='/images/files.png' width="200px")
+
+					p.
+						Other users see all of the documents they have access to.
+					p.
+						When inside a file Snippets are attached with one click.
+				+detailBlock("/images/three.png")
+					img(src='/images/snippets.png' width="200px")
+					p.
+						Wait for Snippets to be posted to your document!
+					p.
+						They can include code fragments or advice in plain text.
+
+		.title More Features!
+		.container-fluid
+			.row
+				+detailBlock("/images/braces.png")
+					p.
+						Syntax highlighting for multiple languages.
+				+detailBlock("/images/upload.png")
+					p.
+						Upload existing projects and documents or start from scratch in the Synnefo editor.
+				+detailBlock("/images/console.png")
+					p.
+						Run and debug code using the integrated command-line interface.

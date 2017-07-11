@@ -1,0 +1,145 @@
+//- Uses the layout.
+extends layout
+
+//- Uses the block part of the layout
+block content
+  .container-fluid
+    .row
+      .col-sm-3
+
+        div(class="well bs-sidebar affix" id="sidebar")
+          +listGroup("links")
+            +listItem("","#",true,"goToEditor")
+              +listHeading 
+                b Open Editor
+            +listItem("dirButton","#",true,"backButton")
+              +listHeading 
+                b Go Back
+            +listItem("dirButton","#",true,"uploadButton")
+              +listHeading 
+                b Upload
+            +listItem("activeButton","#",true,"delete")
+              +listHeading 
+                b Delete
+            +listItem("roleButton","#",true,"newProject")
+              +listHeading 
+                b Add Project
+            +listItem("dirButton","#",true,"newDirectory")
+              +listHeading 
+                b Add Directory
+            +listItem("dirButton","#",true,"newFile")
+              +listHeading 
+                b Add File
+            +listItem("activeButton","#",true,"changePermissions")
+              +listHeading 
+                b Change Roles
+            +listItem("activeButton","#",true,"changeDefaultPermissions")
+              +listHeading 
+                b Change Default Roles
+
+      .col-sm-9
+
+        // Panel to create a new project.
+        +panel("New Project", "info", "projectFormPanel", "", true)
+          p You can make a new project by simply coming up with a name for it and then submit it by pressing the Submit button.
+          label Enter your project name.
+          br
+          input(type="text" class="form-control" value="Project name" id="projectInput" required)
+          br
+          +button("default", "#", "medium", "submitProject") Submit
+
+        // Panel to create a new folder in the currently open folder.
+        +panel("New Folder", "info", "folderFormPanel", "", true)
+          p You can make a new folder in the currently active directory by writing down the name and submitting it.
+          label Enter your folder name.
+          br
+          input(type="text" class="form-control" value="Folder name" id="folderInput" required)
+          br
+          +button("default", "#", "medium", "submitDirectory") Submit
+
+        // Panel to create a new file in the currently open folder.
+        +panel("New File", "info", "fileFormPanel", "", true)
+          p You can make a new file in the currently active directory by writing down the name of the file and submitting it.
+          label Enter your file name.
+          br
+          input(type="text" class="form-control" value="File name" id="fileInput" required)
+          br
+          +button("default", "#", "medium", "submitFile", "newFile()") Submit
+
+        // Panel to change the permissions on a selected item.
+        +panel("Change Permissions", "info", "permissionFormPanel", "", true)
+          p You can change a users permissions by writing down his or hers username and choosing the desired permission for the selected item.
+          label Enter the users's name you wish to change permissions.
+          br
+          input(type="text" class="form-control" value="User name" id="userInput" required)
+          br
+          label Select the user's new permission.
+          br
+          select(class="form-control" id="newPermission")
+            option Author
+            option Admin
+            option Editor
+            option Reviewer
+            option Viewer
+            option No permissions
+          br
+          +button("default", "#", "medium", "changePermission") Change
+
+        // Panel to change the default permissions on a selected item.
+        +panel("Change Default Permissions", "info", "defaultPermissionFormPanel", "", true)
+          p You can change the default level permission of the selected item by choosing a new permission below and by doing that all the users who are at the default get their permissions changed too.
+          label Select the the new default permission level.
+          br
+          select(class="form-control" id="newDefaultPermission")
+            option Author
+            option Admin
+            option Editor
+            option Reviewer
+            option Viewer
+            option No permissions
+          br
+          +button("default", "#", "medium", "changeDefaultPermission") Change
+
+        // Panel to upload files to the currently active folder.
+        +panel("Upload", "info", "uploadFormPanel", "", true)
+          p Choose your file and upload it!
+          label Choose your files.
+          br
+          .input-group
+            span(class="input-group-btn")
+              span(class="btn btn-default btn-file")
+                span Browse&hellip;
+                input(type="file" name="multiInputFileName" multiple id="uploadInput")
+            input(type="text" class="form-control" readonly)
+          br
+          small(class="text-muted") You can upload up to 10 files which have to be under 5 MB.
+          br
+          br
+          +button("default", "#", "medium", "uploadFiles") Upload
+
+        // Role dependent panels.
+
+        +panel("My projects" , "default", "myProjectsPanel", "collapse0")
+          .row.currentDirectoryList
+
+        +panel("Administrated projects" , "default", "administratedProjectsPanel", "collapse1", true)
+          .row.currentDirectoryList
+
+        +panel("Editorial projects" , "default", "editorialProjectsPanel", "collapse2", true)
+          .row.currentDirectoryList
+
+        +panel("Reviewing projects" , "default", "reviewProjectsPanel", "collapse3", true)
+          .row.currentDirectoryList
+
+        +panel("Public projects" , "default", "publicProjectsPanel", "collapse4")
+          .row.currentDirectoryList
+
+        +modal("confirmationAlert", "No", "Yes")
+        +modal("errorMessageAlert", "Ok", "", "Error:")
+
+  script(src='/jqueryFiles/projectsPage/panelsSetup.js')
+  script(src='/jqueryFiles/projectsPage/affix.js')
+  script(src='/jqueryFiles/projectsPage/tooltips.js')
+  script(src='/jqueryFiles/projectsPage/projects.js')
+  script(src='/jqueryFiles/projectsPage/menuButtons.js')
+  script(src='/jqueryFiles/uploadBtn.js')

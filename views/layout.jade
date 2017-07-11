@@ -1,0 +1,31 @@
+include ./templates/mixins
+doctype html
+html( lang="en")
+  head
+    title= title
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+    meta( name='description', content='Synnefo' )
+    //- Bootswatch Theme.
+    +bootswatch ("cosmo")
+    //- Our css stylesheet.
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/codemirror.css')
+    link(rel='stylesheet', href='/stylesheets/monokai.css')
+    script(src='/javascripts/codemirror.js')
+    script(src='/javascripts/javascript.js')
+
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js')
+
+    block head
+
+  body
+    //- Navigation bar
+    include ./templates/navigation
+    .container
+
+      script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+      script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+
+      block content

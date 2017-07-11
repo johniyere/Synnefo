@@ -1,0 +1,47 @@
+extends layout
+
+//- block head
+//- 	style.
+//- 		body { background-color: #FFFFFF; }
+//- 		.home { text-align: center; color: black; }
+//- 		.home .title { font-weight: bold; font-size: 3.5em; margin-bottom: 20px; margin-top: 50px} 
+//- 		.home-box .icon { margin-bottom: 10px; }
+//- 		.home-box .text { line-height: 3.0em; }
+
+
+//- mixin profileBlock()
+//- 	.col-md-4.home-box
+//- 		.text
+//- 			block
+
+//- block content
+
+//- 	.home
+//- 		h1.title My Profile
+//- 		div
+//- 		.container-fluid
+//- 			.row
+//- 				+profileBlock(user.details.getIconURL())
+//- 				img(src=user.details.getIconURL() width="100px")
+//- 				p.
+//- 					#{user.details.username}
+
+style.
+	body { background-color: #FFFFFF; }
+	.home { text-align: center; color: black; }
+	.h1 { text-align: center; color: black; }
+
+block content
+	.home
+		.row
+			.col-md-4.col-md-offset-4
+				+panel("My Profile", "primary")
+					image(src=user.details.getIconURL() width=100 px)
+						p
+						h1.title=user.details.username
+						p
+						h2.title=user.details.firstName + " " + user.details.lastName
+						p
+						h2.title=user.details.email
+
+        

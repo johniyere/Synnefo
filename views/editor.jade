@@ -1,0 +1,168 @@
+//- Uses the layout.
+extends layout-editor
+
+//- Uses the block part of the layout
+block content
+  #wrapper
+    //- Main content
+    .content-wrapper
+      .container-fluid
+        .row(ng-controller='IDEController as ideCtrl')
+          //The file tree div
+          .col-sm-2#treePanel
+            .dropdown
+              a.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown") Themes
+              ul#themes.dropdown-menu
+                li#3024-day
+                  a(href='#') 3024-day
+                li#monokai
+                  a(href='#') Monokai
+                li#abcdef
+                  a(href='#') abcdef
+                li(id='the-matrix')
+                  a(href='#') The Matrix
+                li
+                  a(href='#') Default
+
+            .dropdown
+              a.btn.btn-default.dropdown-toggle#languages(type="button", data-toggle="dropdown") Languages
+              ul#modes.dropdown-menu
+                li#javascript
+                  a(href='#') Javascript
+                li#python
+                  a(href='#') Python
+                li(id='text/x-java')
+                  a(href='#') Java
+                li
+                  a(href='#') Default
+
+            #fileTree.scroll-area
+              //- Root for the file tree.
+              ul.RootList
+            +button("default", "", "", "runBtn", 'run()') Run
+            a.btn.btn-default#saveBtn(ng-click='save()', data-toggle='modal', data-target='#mymodal') Save
+            //+button("default", "", "", "saveBtn", 'save()') Save
+
+          //Show if no tab is opened
+          .col-sm-10#coverPanel(ng-show='tabs.length == 0')
+            .alert.alert-info.notab Open a file to start coding
+
+          //The text editor and the console
+          .col-sm-8#edditorConsolePanel(ng-show='tabs.length > 0')
+            //Tabs
+            #tabs-wrapper
+              ul.nav.nav-tabs
+                li(ng-repeat='tab in tabs', ng-class='{active: isSelected(tab.id)}')
+                  a.tab(href='#', ng-click='setTab(tab.id)', ng-class='{snippet: tab.isSnippet}')
+                    button.close.closeTab(ng-click='closeTab(tab.id)', ng-show='isSelected(tab.id)')
+                      &times;
+                    span.tabHeadings {{tab.title}}
+
+            //The editor
+            #editor-wrapper
+
+              .editorBox
+                textarea#myTextArea
+
+
+            //This part is the console
+            #console-wrapper
+              textarea#output(readonly)
+                {{console}}
+
+          //Snippets
+          .col-sm-2#snippetPanel(ng-show='tabs.length > 0')
+            span(id= "snippetsHeading")
+              h4
+                strong Snippets
+            select.form-control(ng-model="chosenBlockname")
+              option(ng-repeat="blockname in blocknames", value="{{blockname}}")
+                {{blockname}}
+            .panel-group
+              .panel.snippet-panel(ng-repeat="snippet in snippets", ng-show="snippet.blockname === chosenBlockname", ng-click='openSnippetTab(snippet.Id)')
+                a(href='#')
+                  span.snippetID {{snippet.Id}}
+            a.btn.btn-default#snippetBtn(ng-click="addSnippet()", ng-show='chosenBlockname != undefined') Add Snippet
+
+  //Save popup
+  div(id='mymodal', class='modal fade') 
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          h4.modal-title File Saved
+        div.modal-footer(style='display: none;')
+          button.btn.btn-default#modalclose(type='button' data-dismiss='modal')
+  
+  //The file tree script
+  script.
+    //This is a scrit for the file tree
+    $(function(){
+      console.log("Loaded script");
+      // Add jquery scripts to head.
+      $("head").append("<script type='text/javascript' src='/jqueryFiles/fileTree.js'><"+"/script>");
+      // File tree css
+      // css taken from http://techlister.com/jquery/creating-jquery-tree-view-without-plugin/976/
+      $("head").append("<link href='/stylesheets/fileTree.css' rel='stylesheet' type='text/css' media='screen'><"+"/link>");
+      // Find the root.
+      var $root = $(".RootList")
+      // Construct the root.
+      $root.append("<li class=" + !{tree}.type +"><a>" + !{tree}.name + "</a></li>");
+      // Add the first UL after the root.
+      $root.find("li").append("<ul class='FirstList'></ul>");
+      // Make the full tree.
+      buildUL ($root.find(".FirstList"),!{tree}.children);
+
+      // Make the UL interactive.
+      // Code taken form http://techlister.com/jquery/creating-jquery-tree-view-without-plugin/976/
+      // Make directories interactive.
+      $('#treePanel li.Directory > a').click(function(e){
+        e.preventDefault();
+        $(this).parent().toggleClass('active');
+        $(this).parent().children('ul').slideToggle('fast');
+      });
+
+    });
+
+  //Initialize the editor
+  script(type='text/javascript').
+
+    // Put the info from the initial file to a global variable.
+    window.sentFile = !{fileToOpen};
+
+    var myTextArea = document.getElementById('myTextArea');
+    var codeMirror = CodeMirror.fromTextArea(myTextArea, {
+        lineNumbers: true,
+        mode: 'javascript',
+        smartIndent: true,
+        theme: '3024-day',
+        dragDrop: true
+    });
+
+    $("ul#themes.dropdown-menu li").click(function() {
+      console.log('here');
+      codeMirror.setOption("theme", this.id)
+    });
+
+    $("ul#modes.dropdown-menu li").click(function() {
+      codeMirror.setOption("mode", this.id)
+    });
+
+    codeMirror.setSize(700, 1000);
+    window.cm = codeMirror;
+    
+    // Select the element you want to click and add a click event
+    $("#saveBtn").click(function(){
+    // This function will be executed when you click the element
+    // show the element you want to show
+    //$("#mymodal").show();
+
+    // Set a timeout to hide the element again
+    setTimeout(function(){
+        $("#modalclose").click();
+    }, 1000);
+    });
+
+  //load angular
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js')
+  script(src='/javascripts/angular/ide.js')
+  script(src='/javascripts/ctrlsave.js')

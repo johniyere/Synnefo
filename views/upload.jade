@@ -1,0 +1,35 @@
+//- Uses the layout.
+extends layout
+
+//- Uses the block part of the layout.
+
+//- modified to be used by both upload.js and imgupload.js
+block content
+  .row
+    .col-md-4.col-md-offset-4
+      h1= title
+      +panel("Upload", "primary")
+        p Choose your file and upload it!
+        //- HTML form, upload button
+        form(role="form", action=path, method="post", enctype="multipart/form-data")
+          label Select your files to upload:
+          br
+          .input-group
+            span(class="input-group-btn")
+              span(class="btn btn-default btn-file")
+                span Browse&hellip;
+                input(type="file" name="multiInputFileName[]" id="uploadInput")
+            input(type="text" class="form-control" readonly)
+          br
+          input(class=["btn", "btn-default"], type='submit', value='Upload')
+
+  script(src='/jqueryFiles/uploadBtn.js')
+  script.
+
+    // On page load use the script.
+    $(function(){
+      // Add css
+      $("head").append("<link href='/stylesheets/uploadBtn.css' rel='stylesheet'"
+                       + " type='text/css' media='screen'><"+"/link>");
+
+    }); // on page load

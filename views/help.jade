@@ -1,0 +1,217 @@
+//- Uses the layout.
+extends layout
+
+//- Uses the block part of the layout
+block content
+
+  .row
+    .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-1
+      h1 Commands
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-A (PC), Cmd-A (Mac)
+      .col-sm-offset-2.col-md-10
+        p Select the whole content of the editor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Esc
+      .col-sm-offset-2.col-md-10
+        p When multiple selections are present, this deselects all but the primary selection.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-K (Mac)
+      .col-sm-offset-2.col-md-10
+        p Emacs-style line killing. Deletes the part of the line after the cursor. If that consists only of whitespace, the newline at the end of the line is also deleted.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-D (PC), Cmd-D (Mac)
+      .col-sm-offset-2.col-md-10
+        p Deletes the whole line under the cursor, including newline at the end.
+
+      .col-sm-offset-1.col-md-11
+        h5 Cmd-Backspace (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete the part of the line from the left side of the visual line the cursor is on to the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Cmd-Delete (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete the part of the line from the cursor to the right side of the visual line the cursor is on.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Z (PC), Cmd-Z (Mac)
+      .col-sm-offset-2.col-md-10
+        p Undo the last change.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Y (PC), Shift-Cmd-Z (Mac), Cmd-Y (Mac)
+      .col-sm-offset-2.col-md-10
+        p Redo the last undone change.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-U (PC), Cmd-U (Mac)
+      .col-sm-offset-2.col-md-10
+        p Undo the last change to the selection, or if there are no selection-only changes at the top of the history, undo the last change.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-U (PC), Shift-Cmd-U (Mac)
+      .col-sm-offset-2.col-md-10
+        p Redo the last change to the selection, or the last text change if no selection changes remain.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Home (PC), Cmd-Up (Mac), Cmd-Home (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the start of the document.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-End (PC), Cmd-End (Mac), Cmd-Down (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the end of the document.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-Left (PC), Ctrl-A (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the start of the line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Home
+      .col-sm-offset-2.col-md-10
+        p Move to the start of the text on the line, or if we are already there, to the actual start of the line (including whitespace).
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-Right (PC), Ctrl-E (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the end of the line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Cmd-Right (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the right side of the visual line it is on.
+
+      .col-sm-offset-1.col-md-11
+        h5 Cmd-Left (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the left side of the visual line it is on. If this line is wrapped, that may not be the start of the line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Up, Ctrl-P (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor up one line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Down, Ctrl-N (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move down one line.
+
+      .col-sm-offset-1.col-md-11
+        h5 PageUp, Shift-Ctrl-V (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor up one screen, and scroll up by the same distance.
+
+      .col-sm-offset-1.col-md-11
+        h5 PageDown, Ctrl-V (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor down one screen, and scroll down by the same distance.
+
+      .col-sm-offset-1.col-md-11
+        h5 Left, Ctrl-B (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor one character left, going to the previous line when hitting the start of line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Right, Ctrl-F (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor one character right, going to the next line when hitting the end of line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-B (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the start of the previous word.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-F (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move the cursor to the end of the next word.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Left (PC), Alt-Left (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move to the left of the group before the cursor. A group is a stretch of word characters, a stretch of punctuation characters, a newline, or a stretch of more than one whitespace character.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Right (PC), Alt-Right (Mac)
+      .col-sm-offset-2.col-md-10
+        p Move to the right of the group after the cursor
+
+      .col-sm-offset-1.col-md-11
+        h5 Shift-Backspace, Ctrl-H (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete the character before the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Delete, Ctrl-D (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete the character after the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-Backspace (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete up to the start of the word before the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Alt-D (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete up to the end of the word after the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Backspace (PC), Alt-Backspace (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete to the left of the group before the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-Delete (PC), Ctrl-Alt-Backspace (Mac), Alt-Delete (Mac)
+      .col-sm-offset-2.col-md-10
+        p Delete to the start of the group after the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Shift-Tab
+      .col-sm-offset-2.col-md-10
+        p Auto-indent the current line or selection.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-] (PC), Cmd-] (Mac)
+      .col-sm-offset-2.col-md-10
+        p Indent the current line or selection by one indent unit.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-[ (PC), Cmd-[ (Mac)
+      .col-sm-offset-2.col-md-10
+        p Dedent the current line or selection by one indent unit.
+
+      .col-sm-offset-1.col-md-11
+        h5 Tab
+      .col-sm-offset-2.col-md-10
+        p If something is selected, indent it by one indent unit. If nothing is selected, insert a tab character.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-T (Mac)
+      .col-sm-offset-2.col-md-10
+        p Swap the characters before and after the cursor.
+
+      .col-sm-offset-1.col-md-11
+        h5 Enter
+      .col-sm-offset-2.col-md-10
+        p Insert a newline and auto-indent the new line.
+
+      .col-sm-offset-1.col-md-11
+        h5 Insert
+      .col-sm-offset-2.col-md-10
+        p Flip the overwrite flag.
+
+      .col-sm-offset-1.col-md-11
+        h5 Ctrl-S (PC), Cmd-S (Mac)
+      .col-sm-offset-2.col-md-10
+        p Save the currently open file.
+
+      // We are using the CodeMirror editor and these keybinds are defined in that
+      // The manual can be found: https://codemirror.net/doc/manual.html

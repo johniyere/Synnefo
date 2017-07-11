@@ -1,0 +1,126 @@
+h1, h3{
+  cursor:default
+}
+
+/*Taken from:
+http://stackoverflow.com/questions/19337238/twitter-bootstrap-modal-pushes-html-content-to-the-left*/
+body.modal-open {
+    overflow: auto;
+}
+body.modal-open[style] {
+    padding-right: 0px !important;
+}
+.modal::-webkit-scrollbar {
+    width: 0 !important; /*removes the scrollbar but still scrollable*/
+    /* reference: http://stackoverflow.com/a/26500272/2259400 */
+}
+
+html {
+  overflow-y: scroll;
+}
+
+.row.currentDirectoryList .item a:hover{
+  background-color: #2780e3;
+  cursor:pointer
+  border-width: 1px;
+  border-color: #2780e3;
+}
+
+.row.currentDirectoryList .item a:hover span{
+  color: white;
+}
+
+.row.currentDirectoryList .item{
+  text-align:center;
+}
+
+.row.currentDirectoryList .alert{
+  margin: 10px 20px;
+}
+
+.row.currentDirectoryList .item a {
+  padding: 19px 25px;
+  cursor:pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.row.currentDirectoryList .item a span {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  margin-top: -1em;
+  margin-left: -50%;
+  width: 100%;
+  height: 2em;
+  color: #333333;
+  font-family: 'Source Sans Pro', Calibri, Candara, Arial, sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-align:center;
+}
+
+.row.currentDirectoryList .item a.Active{
+  background-color: #7643a8;
+  cursor:pointer;
+  border-width: 1px;
+  border-color: #7643a8;
+}
+
+.row.currentDirectoryList .item a.Active span{
+  color: white;
+}
+
+h4 a:link, h4 a:visited, h4 a:hover, h4 a:active { text-decoration: none; }
+
+@media(max-width:767px){
+  .bs-sidebar.affix {
+    position: static;
+    width: auto;
+    top: 20px;
+    z-index: 1;
+  }
+  .bs-sidebar.affix-top {
+    width: auto;
+  }
+  .tooltip {
+    display: none !important;
+  }
+}
+
+/*Taken from:
+http://stackoverflow.com/questions/18572313/create-sticky-side-navbar-in-bootstrap-3-0*/
+@media (min-width: 768px) {
+  .bs-sidebar.affix {
+    width: 158px;
+    top: 20px;
+    z-index: 1;
+  }
+  .bs-sidebar.affix-top {
+    width: 158px;
+  }
+}
+@media (min-width: 992px) {
+  .bs-sidebar.affix {
+    width: 213px;
+    position: fixed;
+    top: 20px;
+    z-index: 1;
+  }
+  .bs-sidebar.affix-top {
+    width: 213px;
+  }
+}
+@media (min-width: 1200px) {
+  .bs-sidebar.affix {
+    top: 20px;
+    width: 263px;
+    z-index: 1;
+  }
+  .bs-sidebar.affix-top {
+    width: 263px;
+  }
+}
